@@ -1,0 +1,13 @@
+.tmp
+.dockerignore
+.env
+.git
+.gitignore
+.vs
+.mvn
+.idea
+.vscode
+docker-compose.yml
+docker-compose.*.yml
+!obj/Docker/publish/*
+!obj/Docker/empty/

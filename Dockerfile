@@ -9,13 +9,14 @@ RUN apt-get install -y maven
 
 RUN mkdir /publisher
 WORKDIR /publisher
+COPY . /publisher/
 
-ADD . /publisher
-
+# RUN mvn dependency:resolve
+# RUN mvn verify
+# RUN mvn package
 RUN mvn install
-CMD ["start_server.sh"]
-
-
+# ENTRYPOINT /bin/bash
+CMD ["mvn","spring-boot:run"]
 
 # Prepare by downloading dependencies
 

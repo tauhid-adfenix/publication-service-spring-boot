@@ -16,7 +16,7 @@ private static String RABBITMQ_MSG_QUEUE = "rabittmq.test.queue";
 
     @Bean
     public Queue queue() {
-        return new Queue(RABBITMQ_MSG_QUEUE, false);
+        return new Queue(RABBITMQ_MSG_QUEUE, true);
     }
 
     @Bean

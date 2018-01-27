@@ -1,5 +1,6 @@
 package com.adfenix.publication.service.publicationservice.services;
 
+import com.adfenix.publication.service.publicationservice.utils.Helper;
 import org.apache.log4j.LogManager;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -9,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class RabbitMqMsgPublisher {
     private static final org.apache.log4j.Logger log = LogManager.getLogger(RabbitMqMsgPublisher.class);
 
+
     @Autowired
     private RabbitTemplate template;
 
@@ -16,11 +18,8 @@ public class RabbitMqMsgPublisher {
     private Queue queue;
 
 
-//    @Scheduled(fixedDelay = 1000, initialDelay = 500)
-    public void send(String msg) {
-        StringBuilder builder = new StringBuilder(msg);
-        String message = builder.toString();
-        template.convertAndSend(queue.getName(), message);
+    public void send(String message) {
+        template.convertAndSend(queue.getName(), Helper.formatPublishString(message));
         log.warn(" [x] Sent '" + message + "'");
     }
 }

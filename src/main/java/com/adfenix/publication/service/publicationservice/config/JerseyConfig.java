@@ -1,6 +1,6 @@
 package com.adfenix.publication.service.publicationservice.config;
 
-import com.adfenix.publication.service.publicationservice.controllers.ProductController;
+import com.adfenix.publication.service.publicationservice.controllers.PublishController;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,6 @@ import javax.ws.rs.ApplicationPath;
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
-        register(ProductController.class);
+        register(PublishController.class);
     }
 }

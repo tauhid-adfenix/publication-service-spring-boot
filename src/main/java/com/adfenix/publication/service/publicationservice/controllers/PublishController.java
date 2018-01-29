@@ -22,12 +22,12 @@ public class PublishController {
 
     private static final org.apache.log4j.Logger log = LogManager.getLogger(PublishController.class);
 
-    private PublicationService productService;
+    private PublicationService publicationService;
 
 
     @Autowired
-    public void setProductService(PublicationService productService) {
-        this.productService = productService;
+    public void setPublicationService(PublicationService publicationService) {
+        this.publicationService = publicationService;
     }
 
 
@@ -35,7 +35,7 @@ public class PublishController {
     @Path("get/list")
     @Produces("application/json")
     public Response listMessages(){
-        List<Publication> apiResponse = productService.getAllPublications();
+        List<Publication> apiResponse = publicationService.getAllPublications();
         return Response.ok(apiResponse).build();
     }
 
@@ -44,7 +44,7 @@ public class PublishController {
     @Produces("application/json")
     public Response sendMsgToRabbitQueue(@PathParam("message") String message){
         Publication publication = Publication.createInstance(message);
-        productService.sendPublicationToRabbitQueue(publication);
+        publicationService.sendPublicationToRabbitQueue(publication);
 
         return Response.ok().build();
     }

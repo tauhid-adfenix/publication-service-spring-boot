@@ -2,6 +2,7 @@ package com.adfenix.publication.service.publicationservice.controllers;
 
 import com.adfenix.publication.service.publicationservice.models.Publication;
 import com.adfenix.publication.service.publicationservice.services.PublicationService;
+import com.adfenix.publication.service.publicationservice.utils.Helper;
 import org.apache.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,7 +47,7 @@ public class PublishController {
         Publication publication = Publication.createInstance(message);
         publicationService.sendPublicationToRabbitQueue(publication);
 
-        return Response.ok().build();
+        return Response.ok(Helper.formatPublishString("Successfully published")).build();
     }
 }
 

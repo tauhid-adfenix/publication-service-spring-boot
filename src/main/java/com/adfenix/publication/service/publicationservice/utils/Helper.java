@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Helper {
-    private static final String PUBLISH_DATA_JSON_PATTERN = "{\"message\" : \"$data\"}";
+    private static final String PUBLISH_DATA_JSON_PATTERN = "{\"message\": \"$data\"}";
 
     public static String getCurrentDateTime(){
         Date date = new Date();
